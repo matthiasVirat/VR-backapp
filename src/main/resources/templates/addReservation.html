@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Client</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Add a new Reservation</h1>
+
+<form th:action="@{/reservation/new}" th:object="${reservation}" method="POST">
+    idClient: <input type="text" th:field="*{idClient}" />
+    <br/>
+    immat:<input type="text" th:field="*{immat}" />
+    <br/>
+    dateDebut: <input type="text" th:field="*{dateDebut}" />
+    <br/>
+    dateFin:<input type="text" th:field="*{dateFin}" />
+    <br/>
+    kmEstimes: <input type="text" th:field="*{kmEstimes}" />
+    <br/>
+    kmReels:<input type="text" th:field="*{kmReels}" />
+    <br/>
+    billed:<input type="text" th:field="*{billed}" />
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+<br/>
+</body>
+</html>

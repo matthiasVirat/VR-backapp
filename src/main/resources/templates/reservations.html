@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1>Reservation List</h1>
+<br/><br/>
+<div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Client id</th>
+                <th scope="col">Reg No</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Kms estimated</th>
+                <th scope="col">Actual Kms</th>
+                <th scope="col">Billed</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tr th:each ="reservation : ${reservations}">
+            <td th:utext="${reservation.idClient}">...</td>
+            <td th:utext="${reservation.immat}">...</td>
+            <td th:utext="${reservation.dateDebut}">...</td>
+            <td th:utext="${reservation.dateFin}">...</td>
+            <td th:utext="${reservation.kmEstimes}">...</td>
+            <td th:utext="${reservation.kmReels}">...</td>
+            <td th:utext="${reservation.billed}">...</td>
+            <td><a th:href="@{'/reservation/update/' + ${reservation.id}}">Update Reservation</a></td>
+            <td>
+                <form th:action="@{'/reservation/delete/' + ${reservation.id}}" th:object="${reservations}" method="GET">
+                <input type="submit" value="Delete"/>
+                </form>
+            </td>
+            <!--<td th:utext="${car.carModel}">...</td>-->
+            <!--<td><a th:href="@{'/Cars/' + ${car.id}}">See Car</a></td>-->
+            <!--<td><form th:action="@{'/Cars/Delete/' + ${car.id}}" th:object="${car}" method="GET">-->
+            <!--<input type="submit" value="Delete"/>-->
+            <!--</form></td>-->
+            <!--<td><a th:href="@{'/Cars/Edit/' + ${car.id}}">Edit Car</a></td>-->
+            <!--</td>-->
+        </tr>
+    </table>
+</div>
+<div style="text-align: center">
+    <a href="../addReservation">Add New Reservation</a>
+</div>
+
+</body>
+</html>

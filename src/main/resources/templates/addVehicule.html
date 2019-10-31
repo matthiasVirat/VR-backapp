@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Vehicle</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Add Vehicle</h1>
+
+<form th:action="@{/vehicule/new}" th:object="${vehicule}" method="POST">
+    registrationNbr: <input type="text" th:field="*{registrationNbr}" />
+    make <input type="text" th:field="*{make}" />
+    <br/>
+    model<input type="text" th:field="*{model}" />
+    <br/>
+    colour <input type="text" th:field="*{colour}" />
+    <br/>
+    reservationPrice<input type="text" th:field="*{reservationPrice}" />
+    <br/>
+    pricePerKm <input type="text" th:field="*{pricePerKm}" />
+    <br/>
+    horsePower<input type="text" th:field="*{horsePower}" />
+    <br/>
+    <input type="submit" value="Create"/>
+
+</form>
+<br/>
+</body>
+</html>
